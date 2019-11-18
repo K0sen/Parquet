@@ -1,0 +1,32 @@
+{
+    "name": "Parquet",
+    "version": "0.0.1",
+    "versionDate": "2019-08-24",
+    "author": "hackolade",
+    "engines": {
+        "hackolade": "3.4.0",
+        "hackoladePlugin": "1.2.0"
+    },
+    "contributes": {
+        "target": {
+            "applicationTarget": "PARQUET",
+            "title": "Apache Parquet",
+            "versions": [
+                "1.x",
+                "2.x"
+            ]
+        },
+        "features": {
+            "nestedCollections": false,
+            "disablePatternField": false,
+            "enableForwardEngineering": true,
+            "disableMultipleTypes": true,
+            "enableReverseEngineering": true,
+            "disableChoices": true,
+            "enableJsonType": true
+        }
+    },
+    "description": "Hackolade plugin for Apache Parquet",
+    "icon_url": "C:\\Users\\Pascal\\.hackolade\\plugins\\Parquet\\logo.png",
+    "disabled": false
+}

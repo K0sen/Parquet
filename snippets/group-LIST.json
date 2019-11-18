@@ -1,0 +1,13 @@
+{
+	"name": "group-LIST",
+	"parentType": "document",
+	"properties": [{
+		"name": "list",
+		"type": "group",
+		"repetition": "repeated",
+		"properties": [{
+			"name": "element",
+			"type": "binary"
+		}]
+	}]
+}

@@ -1,0 +1,22 @@
+{
+	"name": "group",
+	"erdAbbreviation": "<grp>",
+	"dtdAbbreviation": "{...}",
+	"parentType": "document",
+	"useSample": true,
+	"defaultValues": {
+		"subtype": "map<str>",
+		"keyType": "string",
+		"dependencies": [],
+		"primaryKey": false,
+		"properties": [],
+		"minProperties": "",
+		"maxProperties": "",
+		"additionalProperties": false,
+		"logicalType": [
+			{ "name": "", "snippet": "" },
+			{ "name": "LIST", "snippet": "group-LIST" },
+			{ "name": "MAP", "snippet": "group-MAP" }
+		]
+	}
+}

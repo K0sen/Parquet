@@ -1,0 +1,22 @@
+{
+	"name": "binary",
+	"erdAbbreviation": "<bin>",
+	"dtdAbbreviation": "{bin}",
+	"useSample": true,
+	"parentType": "string",
+	"defaultValues": {
+		"required": true,
+		"minLength": "",
+		"maxLength": "",
+		"pattern": "",
+		"default": "",
+		"primaryKey": false,
+		"relationshipType": "",
+		"parentRelationship": "",
+		"childRelationships": [],
+		"foreignCollection": "",
+		"foreignField": [],
+		"enum": [],
+		"sample": ""
+	}
+}
