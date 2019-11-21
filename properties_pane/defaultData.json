@@ -20,7 +20,16 @@
 		"signed": true,
 		"compressionCodec": "Uncompressed",
 		"encoding": ["Plain"],
-		"repetition": "required"
+		"repetition": "required",
+		"byteLength": {
+			"valueDependencies": [{
+				"value": 12,
+				"dependency": {
+					"key": "childType",
+					"value": "fixed_len_byte_array"
+				}
+			}]
+		}
 	},
 	"patternField": {
 		"name": "^[a-zA-Z0-9_.-]+$"

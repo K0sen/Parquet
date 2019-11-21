@@ -758,17 +758,6 @@ making sure that you maintain a proper JSON format.
 				"disabledOption": true
 			},
 			{
-				"propertyName": "Byte length",
-				"propertyKeyword": "byteLength",
-				"propertyType": "numeric",
-				"valueType": "number",
-				"allowNegative": false,
-				"dependency": {
-					"key": "logicalType",
-					"value": ""
-				}
-			},
-			{
 				"propertyName": "Decimal",
 				"propertyKeyword": "decimal",
 				"propertyType": "checkbox",
