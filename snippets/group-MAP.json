@@ -3,7 +3,7 @@
 	"parentType": "document",
 	"properties": [{
 		"name": "key_value",
-		"type": "group",
+		"type": "document",
 		"properties": [{
 			"name": "key",
 			"type": "binary",

@@ -887,18 +887,7 @@ making sure that you maintain a proper JSON format.
 			"refPath",
 			"description",
 			"type",
-			{
-				"propertyName": "Logical type",
-				"propertyKeyword": "logicalType",
-				"propertyType": "select",
-				"options": [
-					"",
-					"LIST",
-					"MAP"
-				],
-				"data": "options",
-				"valueType": "string"
-			},
+			"subtype",
 			{
 				"propertyName": "Repetition level",
 				"propertyKeyword": "repetition",

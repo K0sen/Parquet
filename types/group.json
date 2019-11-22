@@ -13,8 +13,7 @@
 		"minProperties": "",
 		"maxProperties": "",
 		"additionalProperties": false,
-		"logicalType": [
-			{ "name": "", "snippet": "" },
+		"subTypes": [
 			{ "name": "LIST", "snippet": "group-LIST" },
 			{ "name": "MAP", "snippet": "group-MAP" }
 		]

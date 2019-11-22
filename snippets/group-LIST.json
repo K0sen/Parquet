@@ -3,7 +3,7 @@
 	"parentType": "document",
 	"properties": [{
 		"name": "list",
-		"type": "group",
+		"type": "document",
 		"repetition": "repeated",
 		"properties": [{
 			"name": "element",
