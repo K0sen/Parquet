@@ -1,0 +1,10 @@
+{
+	"name": "group-list-properties",
+	"parentType": "document",
+	"properties": [
+		{
+		"name": "element",
+		"type": "binary"
+		}
+	]
+}

@@ -880,7 +880,12 @@ making sure that you maintain a proper JSON format.
 		],
 		"___0": [],
 		"group": [
-			"name",
+			{
+				"propertyName": "Name",
+				"propertyKeyword": "name",
+				"propertyType": "text",
+				"disabled": true
+			},
 			"code",
 			"sampleName",
 			"schemaId",
@@ -895,6 +900,71 @@ making sure that you maintain a proper JSON format.
 				"options": [
 					"required",
 					"optional"
+				],
+				"data": "options",
+				"valueType": "string"
+			},
+			{
+				"propertyName": "nullable",
+				"propertyKeyword": "nullable",
+				"propertyType": "checkbox"
+			},
+			"minProperties",
+			"maxProperties",
+			"dependencies",
+			"additionalProperties",
+			"comments"
+		],
+		"group-list": [
+			{
+				"propertyName": "Name",
+				"propertyKeyword": "name",
+				"propertyType": "text",
+				"disabled": true
+			},
+			"code",
+			"sampleName",
+			"schemaId",
+			"refPath",
+			"description",
+			"type",
+			{
+				"propertyName": "Repetition level",
+				"propertyKeyword": "repetition",
+				"propertyType": "select",
+				"disabled": true,
+				"options": [
+					"repeated"
+				],
+				"data": "options",
+				"valueType": "string"
+			},
+			{
+				"propertyName": "nullable",
+				"propertyKeyword": "nullable",
+				"propertyType": "checkbox"
+			},
+			"minProperties",
+			"maxProperties",
+			"dependencies",
+			"additionalProperties",
+			"comments"
+		],
+		"group-map": [
+			"name",
+			"code",
+			"sampleName",
+			"schemaId",
+			"refPath",
+			"description",
+			"type",
+			{
+				"propertyName": "Repetition level",
+				"propertyKeyword": "repetition",
+				"propertyType": "select",
+				"disabled": true,
+				"options": [
+					"repeated"
 				],
 				"data": "options",
 				"valueType": "string"
