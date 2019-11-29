@@ -1,8 +1,0 @@
-{
-	"name": "group-list",
-	"parentType": "document",
-	"properties": [{
-		"name": "list",
-		"type": "group-list"
-	}]
-}

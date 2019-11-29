@@ -5,18 +5,12 @@
 	"parentType": "document",
 	"useSample": true,
 	"defaultValues": {
-		"subtype": "list",
 		"keyType": "string",
 		"dependencies": [],
 		"primaryKey": false,
 		"properties": [],
 		"minProperties": "",
 		"maxProperties": "",
-		"additionalProperties": false,
-		"childValueType": "noType",
-		"subTypes": [
-			{ "name": "list", "snippet": "group-list" },
-			{ "name": "map", "snippet": "group-map" }
-		]
+		"additionalProperties": false
 	}
 }

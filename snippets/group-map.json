@@ -1,8 +1,0 @@
-{
-	"name": "group-map",
-	"parentType": "document",
-	"properties": [{
-		"name": "key_value",
-		"type": "group-map"
-	}]
-}

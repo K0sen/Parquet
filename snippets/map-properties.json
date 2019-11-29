@@ -1,5 +1,5 @@
 {
-	"name": "group-map-properties",
+	"name": "map-properties",
 	"parentType": "document",
 	"properties": [{
 		"name": "key",

@@ -1,11 +1,10 @@
 {
-	"name": "group-list",
-	"erdAbbreviation": "grp<lst>",
+	"name": "map",
+	"erdAbbreviation": "<map>",
 	"dtdAbbreviation": "{...}",
 	"parentType": "document",
 	"useSample": true,
 	"defaultValues": {
-		"name": "list",
 		"keyType": "string",
 		"dependencies": [],
 		"primaryKey": false,
@@ -13,7 +12,6 @@
 		"minProperties": "",
 		"maxProperties": "",
 		"additionalProperties": false,
-		"childValueType": "noType",
-		"snippet": "group-list-properties"
+		"snippet": "map-properties"
 	}
 }
