@@ -35,8 +35,7 @@ const reverseCompression = value => {
 	return { compressionCodec };
 };
 
-const reverseEncoding = value => {
-	const lowerCaseValue = value.toLowerCase();
+const reverseEncoding = encoding => {
 	const hashMap = {
 		plain: 'Plain',
 		group_var_int: 'Group_Var_Int',
@@ -48,7 +47,14 @@ const reverseEncoding = value => {
 		delta_byte_array: 'Delta_Byte_Array',
 		rle_dictionary: 'RLE_Dictionary',
 	};
-	const encodingType = hashMap[lowerCaseValue] || value;
+	if (Array.isArray(encoding)) {
+		return {
+			encoding: encoding.map(encodingType => hashMap[encodingType.toLowerCase()] || encoding)
+		};
+	}
+
+	const lowerCaseValue = value.toLowerCase();
+	const encodingType = hashMap[lowerCaseValue] || encoding;
 
 	return { encoding: [ encodingType ] };
 }

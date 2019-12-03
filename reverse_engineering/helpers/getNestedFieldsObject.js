@@ -1,4 +1,11 @@
-// Gotten from here reverse_engineering/node_modules/parquetjs-lite/lib/reader.js:929
+const definePath = (schemaElement, schema) => {
+	if (!schema.parent) {
+		return [schemaElement.name];
+	}
+
+	const parent = Object.values(schema.parent)[0];
+	return definePath(parent, schema.parent).concat([schemaElement.name]);
+};
 
 function getNestedFieldsObject(schemaElements) {
 	let schema = {};
@@ -7,6 +14,7 @@ function getNestedFieldsObject(schemaElements) {
 			schema[schemaElement.name] = Object.assign(schemaElement, {
 				isNested: true,
 				fieldCount: schemaElement.num_children,
+				path: definePath(schemaElement, schema),
 				fields: Object.create({}, {
 					parent: {
 						value: schema,
@@ -21,7 +29,7 @@ function getNestedFieldsObject(schemaElements) {
 
 			schema = schema[schemaElement.name].fields;
 		} else {
-			schema[schemaElement.name] = Object.assign({}, schemaElement);
+			schema[schemaElement.name] = Object.assign({}, schemaElement, { path: definePath(schemaElement, schema) });
 		}
 
 		while (schema.parent && Object.keys(schema).length === schema.num_children) {

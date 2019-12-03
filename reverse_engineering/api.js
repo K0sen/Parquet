@@ -9,7 +9,7 @@ module.exports = {
 	async reFromFile(data, logger, callback) {
 		try {
 			const { filePath } = data;
-			const fileName = path.basename(filePath);
+			const fileName = path.basename(filePath, '.parquet');
 			const schema = await fileReadWriteService.readParquetFile(filePath);
 			const JSONSchema = JSONConvertService.convertFieldSchemasToJSON(schema);
 			const wrappedJSONSchema = wrapFieldsIntoJSONSchema(JSONSchema, fileName);

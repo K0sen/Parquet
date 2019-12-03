@@ -27,19 +27,13 @@ const getRawMetadataFromFile = filePath =>
 
 const readParquetFile = async filePath => {
 	try {
-		const metadata = await getMetadataFromFile(filePath);
-		return metadata.schema.fields;
-	} catch(redundantErr) {
-		try {
-			const metadata = await getRawMetadataFromFile(filePath);
-			return rawFileDataTransformService.transformMetadata(metadata);
-		} catch(err) {
-			throw new Error(err);
-		}
+		const metadata = await getRawMetadataFromFile(filePath);
+		return rawFileDataTransformService.transformMetadata(metadata);
+	} catch(err) {
+		throw new Error(err);
 	}
 };
 
 module.exports = {
 	readParquetFile,
 }
-
