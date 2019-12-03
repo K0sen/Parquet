@@ -1,0 +1,27 @@
+{
+	"field": {
+		"dtd": [{
+			"value": {
+				"border-style": "solid"
+			},
+			"dependency": {
+				"key": "repetition",
+				"value": "required"
+			}
+		}],
+		"erd": [
+			"keys",
+			"type",
+			{
+				"value": "*",
+				"dependency": {
+					"key": "repetition",
+					"value": "required"
+				},
+				"width": 20
+			},
+			"indexes",
+			"refType"
+		]
+	}
+}
