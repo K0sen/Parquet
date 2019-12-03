@@ -167,11 +167,6 @@ making sure that you maintain a proper JSON format.
 					"RLE_Dictionary"
 				]
 			},
-			{
-				"propertyName": "nullable",
-				"propertyKeyword": "nullable",
-				"propertyType": "checkbox"
-			},
 			"default",
 			"dependencies",
 			"sample",
@@ -421,11 +416,6 @@ making sure that you maintain a proper JSON format.
 					"RLE_Dictionary"
 				]
 			},
-			{
-				"propertyName": "nullable",
-				"propertyKeyword": "nullable",
-				"propertyType": "checkbox"
-			},
 			"minimum",
 			"exclusiveMinimum",
 			"maximum",
@@ -492,11 +482,6 @@ making sure that you maintain a proper JSON format.
 					"RLE_Dictionary"
 				]
 			},
-			{
-				"propertyName": "nullable",
-				"propertyKeyword": "nullable",
-				"propertyType": "checkbox"
-			},
 			"minimum",
 			"exclusiveMinimum",
 			"maximum",
@@ -562,11 +547,6 @@ making sure that you maintain a proper JSON format.
 					"Delta_Byte_Array",
 					"RLE_Dictionary"
 				]
-			},
-			{
-				"propertyName": "nullable",
-				"propertyKeyword": "nullable",
-				"propertyType": "checkbox"
 			},
 			"minimum",
 			"exclusiveMinimum",
@@ -714,11 +694,6 @@ making sure that you maintain a proper JSON format.
 					"RLE_Dictionary"
 				]
 			},
-			{
-				"propertyName": "nullable",
-				"propertyKeyword": "nullable",
-				"propertyType": "checkbox"
-			},
 			"default",
 			"enum",
 			"dependencies",
@@ -850,11 +825,6 @@ making sure that you maintain a proper JSON format.
 					"RLE_Dictionary"
 				]
 			},
-			{
-				"propertyName": "nullable",
-				"propertyKeyword": "nullable",
-				"propertyType": "checkbox"
-			},
 			"minimum",
 			"exclusiveMinimum",
 			"maximum",
@@ -898,15 +868,11 @@ making sure that you maintain a proper JSON format.
 				"propertyType": "select",
 				"options": [
 					"required",
-					"optional"
+					"optional",
+					"repeated"
 				],
 				"data": "options",
 				"valueType": "string"
-			},
-			{
-				"propertyName": "nullable",
-				"propertyKeyword": "nullable",
-				"propertyType": "checkbox"
 			},
 			"minProperties",
 			"maxProperties",
@@ -946,7 +912,6 @@ making sure that you maintain a proper JSON format.
 			"refPath",
 			"description",
 			"type",
-			"subtype",
 			{
 				"propertyName": "Repetition level",
 				"propertyKeyword": "repetition",
