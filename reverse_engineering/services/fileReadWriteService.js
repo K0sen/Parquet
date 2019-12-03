@@ -28,7 +28,14 @@ const getRawMetadataFromFile = filePath =>
 const readParquetFile = async filePath => {
 	try {
 		const metadata = await getRawMetadataFromFile(filePath);
-		return rawFileDataTransformService.transformMetadata(metadata);
+		const { key_value_metadata, created_by } = metadata;
+		return {
+			metadata: {
+				key_value_metadata,
+				created_by,
+			},
+			schema: rawFileDataTransformService.transformMetadata(metadata),
+		};
 	} catch(err) {
 		throw new Error(err);
 	}
