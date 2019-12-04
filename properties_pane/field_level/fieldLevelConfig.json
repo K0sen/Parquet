@@ -850,12 +850,7 @@ making sure that you maintain a proper JSON format.
 		],
 		"___0": [],
 		"group": [
-			{
-				"propertyName": "Name",
-				"propertyKeyword": "name",
-				"propertyType": "text",
-				"disabled": true
-			},
+			"name",
 			"code",
 			"sampleName",
 			"schemaId",
