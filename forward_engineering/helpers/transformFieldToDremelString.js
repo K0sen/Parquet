@@ -1,31 +1,31 @@
-const getRepetition = field => field.repetition + ' ';
-const getName = field => field.name + ' ';
+const getRepetition = field => field.repetition;
+const getName = field => field.name;
 
 const getType = field => {
 	const { type } = field;
 	switch(type) {
 		case 'list':
-		case 'map': return 'group ';
-		case 'int': return `int${field.bitWidth} `;
-		default: return type + ' ';
+		case 'map': return 'group';
+		case 'int': return `int${field.bitWidth}`;
+		default: return type;
 	}
 };
 
 const getLogicalType = field => {
 	const { type, logicalType } = field;
 	if (type === 'list') {
-		return '(LIST) ';
+		return '(LIST)';
 	}
 
 	if (type === 'map') {
-		return '(MAP) ';
+		return '(MAP)';
 	}
 
 	if (!logicalType) {
 		return '';
 	}
 
-	return `(${logicalType}) `;
+	return `(${logicalType})`;
 };
 
 const transformFieldToDremelString = field => {
@@ -34,7 +34,7 @@ const transformFieldToDremelString = field => {
 		getType(field),
 		getName(field),
 		getLogicalType(field),
-	].join('');
+	].join(' ').trim();
 };
 
 module.exports = transformFieldToDremelString;

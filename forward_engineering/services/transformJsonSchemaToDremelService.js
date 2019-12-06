@@ -4,6 +4,7 @@ const prependFieldWithSpaces = require('../helpers/prependFieldWithSpaces');
 const transformFieldToDremelString = require('../helpers/transformFieldToDremelString');
 const hasFieldChild = require('../helpers/hasFieldChild');
 const getFieldChildren = require('../helpers/getFieldChildren');
+const getFieldDefinitionWrapper = require('../helpers/getFieldDefinition');
 
 const SPACE_INDENT_AMOUNT = 2;
 const HEADER = 'header';
@@ -24,7 +25,7 @@ const defineFieldType = jsonSchema => {
 
 const transformHeader = field => `message ${field.title} {\n}`;
 const transformNestedField = field => `${transformFieldToDremelString(field)} {\n}`;
-const transformSingleField = field => `${transformFieldToDremelString(field)}`;
+const transformSingleField = field => `${transformFieldToDremelString(field)};`;
 
 const transformFieldByType = type => field => {
 	switch(type) {
@@ -36,9 +37,13 @@ const transformFieldByType = type => field => {
 };
 
 const setName = name => field => Object.assign({}, field, { name });
+const isDefinition = field => Boolean(field.$ref);
 
-const transformFields = (fields, spaceAmount = 0, initialParent = null) =>
-	Object.entries(fields).reduce((parent, [fieldName, field]) => {
+const transformFields = getFieldDefinition => (fields, spaceAmount = 0, initialParent = null) =>
+	Object.entries(fields).reduce((parent, [fieldName, fieldBody]) => {
+		const field = isDefinition(fieldBody)
+			? getFieldDefinition(fieldBody)
+			: fieldBody;
 		const fieldType = defineFieldType(field);
 		const preparedField = pipe([
 			setName(fieldName),
@@ -52,18 +57,21 @@ const transformFields = (fields, spaceAmount = 0, initialParent = null) =>
 
 		const children = getFieldChildren(field);
 		return wrapFieldWithParent(
-			transformFields(children, spaceAmount + SPACE_INDENT_AMOUNT, preparedField),
+			transformFields(getFieldDefinition)(children, spaceAmount + SPACE_INDENT_AMOUNT, preparedField),
 			parent
 		);
 	}, initialParent);
 
-const transformSchema = jsonSchema => {
+Object.entries(updatedStore).map(([name, el]) => ({ [name]: JSON.stringify(el).length }));
+
+const transformSchema = (jsonSchema, definitions) => {
 	const header = transformFieldByType(HEADER)(jsonSchema);
 	if (!hasFieldChild(jsonSchema)) {
 		return header;
 	}
 
-	return transformFields(jsonSchema.properties, SPACE_INDENT_AMOUNT, header);
+	const getFieldDefinition = getFieldDefinitionWrapper(definitions);
+	return transformFields(getFieldDefinition)(jsonSchema.properties, SPACE_INDENT_AMOUNT, header);
 };
 
 module.exports = {
