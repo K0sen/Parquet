@@ -5,6 +5,7 @@ const transformFieldToDremelString = require('../helpers/transformFieldToDremelS
 const hasFieldChild = require('../helpers/hasFieldChild');
 const getFieldChildren = require('../helpers/getFieldChildren');
 const getFieldDefinitionWrapper = require('../helpers/getFieldDefinition');
+const removeChildFromField = require('../helpers/removeChildFromField');
 
 const SPACE_INDENT_AMOUNT = 2;
 const HEADER = 'header';
@@ -39,22 +40,12 @@ const transformFieldByType = type => field => {
 const setName = name => field => Object.assign({}, field, { name });
 const isDefinition = field => Boolean(field.$ref);
 
-const removeChildFromField = field => {
-	const newField = Object.assign({}, field);
-	delete newField.properties;
-	delete newField.patternProperties;
-	delete newField.items;
-	return newField;
-}
-
-const reformatField = field => pipe([
-	field => isDefinition(field) ? getFieldDefinition(field) : field,
-	field => field.physicalType ? removeChildFromField(field) : field,
-])(field);
-
 const transformFields = getFieldDefinition => (fields, spaceAmount = 0, initialParent = null) =>
 	Object.entries(fields).reduce((parent, [fieldName, fieldBody]) => {
-		const field = reformatField(fieldBody);
+		const field = pipe([
+			fieldBody => isDefinition(fieldBody) ? getFieldDefinition(fieldBody) : fieldBody,
+			fieldBody => fieldBody.physicalType ? removeChildFromField(fieldBody) : fieldBody,
+		])(fieldBody);
 		const fieldType = defineFieldType(field);
 		const preparedField = pipe([
 			setName(fieldName),
