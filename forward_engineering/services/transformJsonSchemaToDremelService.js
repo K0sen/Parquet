@@ -16,7 +16,7 @@ const defineFieldType = jsonSchema => {
 		return HEADER;
 	}
 
-	if (jsonSchema.properties || jsonSchema.items) {
+	if (hasFieldChild(jsonSchema)) {
 		return NESTED_FIELD;
 	}
 
@@ -39,11 +39,22 @@ const transformFieldByType = type => field => {
 const setName = name => field => Object.assign({}, field, { name });
 const isDefinition = field => Boolean(field.$ref);
 
+const removeChildFromField = field => {
+	const newField = Object.assign({}, field);
+	delete newField.properties;
+	delete newField.patternProperties;
+	delete newField.items;
+	return newField;
+}
+
+const reformatField = field => pipe([
+	field => isDefinition(field) ? getFieldDefinition(field) : field,
+	field => field.physicalType ? removeChildFromField(field) : field,
+])(field);
+
 const transformFields = getFieldDefinition => (fields, spaceAmount = 0, initialParent = null) =>
 	Object.entries(fields).reduce((parent, [fieldName, fieldBody]) => {
-		const field = isDefinition(fieldBody)
-			? getFieldDefinition(fieldBody)
-			: fieldBody;
+		const field = reformatField(fieldBody);
 		const fieldType = defineFieldType(field);
 		const preparedField = pipe([
 			setName(fieldName),
@@ -51,7 +62,7 @@ const transformFields = getFieldDefinition => (fields, spaceAmount = 0, initialP
 			prependFieldWithSpaces(spaceAmount),
 		])(field);
 
-		if (fieldType === SINGLE_FIELD || !hasFieldChild(field)) {
+		if (fieldType === SINGLE_FIELD) {
 			return wrapFieldWithParent(preparedField, parent);
 		}
 
@@ -69,7 +80,8 @@ const transformSchema = (jsonSchema, definitions) => {
 	}
 
 	const getFieldDefinition = getFieldDefinitionWrapper(definitions);
-	return transformFields(getFieldDefinition)(jsonSchema.properties, SPACE_INDENT_AMOUNT, header);
+	const children = getFieldChildren(jsonSchema);
+	return transformFields(getFieldDefinition)(children, SPACE_INDENT_AMOUNT, header);
 };
 
 module.exports = {

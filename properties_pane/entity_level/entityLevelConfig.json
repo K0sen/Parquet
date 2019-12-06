@@ -158,9 +158,5 @@ making sure that you maintain a proper JSON format.
 			}
 		],
 		"columnsRatio": [4.1, 5]
-	},
-	{
-		"lowerTab": "Secondary Indexes",
-		"structure": []
 	}
 ]

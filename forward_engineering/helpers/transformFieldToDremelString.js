@@ -2,7 +2,11 @@ const getRepetition = field => field.repetition;
 const getName = field => field.name;
 
 const getType = field => {
-	const { type } = field;
+	const { type, physicalType } = field;
+	if (physicalType) {
+		return physicalType;
+	}
+
 	switch(type) {
 		case 'list':
 		case 'map': return 'group';

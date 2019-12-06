@@ -1,7 +1,7 @@
 const getChildren = field => {
-	const { items, properties } = field;
-	if (properties) {
-		return properties;
+	const { items, properties, patternProperties } = field;
+	if (properties || patternProperties) {
+		return Object.assign({}, properties, patternProperties);
 	}
 
 	if (items && Array.isArray(items)) {

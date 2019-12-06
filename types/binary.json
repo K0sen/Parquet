@@ -4,8 +4,10 @@
 	"dtdAbbreviation": "{bin}",
 	"useSample": true,
 	"parentType": "string",
+	"jsonType": {
+		"order": 1
+	},
 	"defaultValues": {
-		"required": true,
 		"minLength": "",
 		"maxLength": "",
 		"pattern": "",
