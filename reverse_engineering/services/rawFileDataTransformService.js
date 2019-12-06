@@ -3,7 +3,7 @@ const parquet_thrift = require('parquetjs-lite/gen-nodejs/parquet_types');
 const isNumber = require('../helpers/isNumber');
 const getNestedFieldsObject = require('../helpers/getNestedFieldsObject');
 const getFieldAdditionalData = require('../helpers/getFieldAdditionalData');
-const pipe = require('../helpers/pipe');
+const pipe = require('../../helpers/pipe');
 
 const transformRepetitionType = repetitionTypeEnum => ({
 	repetitionType: parquet_util.getThriftEnum(

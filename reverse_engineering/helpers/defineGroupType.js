@@ -1,4 +1,4 @@
-const { MAP, LIST, ELEMENT, KEY, KEY_VALUE, VALUE, GROUP } = require('../../config/constants');
+const { MAP, LIST, ELEMENT, KEY, KEY_VALUE, VALUE, GROUP } = require('../constants');
 
 const isMap = field => {
 	const [keyValue] = Object.values(field.fields);

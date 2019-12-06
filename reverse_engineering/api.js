@@ -4,7 +4,7 @@ const fileReadWriteService = require('./services/fileReadWriteService');
 const JSONConvertService = require('./services/JSONConvertService');
 const wrapFieldsIntoJSONSchema = require('./helpers/wrapFieldsIntoJSONSchema');
 const includeMetadataInJSONSchema = require('./helpers/includeMetadataInJSONSchema');
-const pipe = require('./helpers/pipe');
+const pipe = require('../helpers/pipe');
 const path = require('path');
 
 module.exports = {

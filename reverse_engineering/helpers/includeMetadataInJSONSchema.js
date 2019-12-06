@@ -1,4 +1,4 @@
-const pipe = require('./pipe');
+const pipe = require('../../helpers/pipe');
 
 const includeCreator = createdBy => JSONSchema => {
 	if (!createdBy) {
