@@ -1,5 +1,5 @@
-# Apache Hive
-Hackolade plugin for Apache Hive
+# Apache Parquet
+Hackolade plugin for Apache Parquet
 
 <div class="main-content">
 
