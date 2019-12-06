@@ -62,8 +62,6 @@ const transformFields = getFieldDefinition => (fields, spaceAmount = 0, initialP
 		);
 	}, initialParent);
 
-Object.entries(updatedStore).map(([name, el]) => ({ [name]: JSON.stringify(el).length }));
-
 const transformSchema = (jsonSchema, definitions) => {
 	const header = transformFieldByType(HEADER)(jsonSchema);
 	if (!hasFieldChild(jsonSchema)) {
