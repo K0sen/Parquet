@@ -48,19 +48,19 @@ const transformFields = getFieldDefinition => (fields, spaceAmount = 0, initialP
 			fieldBody => fieldBody.physicalType ? Object.assign({}, fieldBody, { logicalType: 'UTF8' }) : fieldBody,
 		])(fieldBody);
 		const fieldType = defineFieldType(field);
-		const stringifyField = pipe([
+		const stringifiedField = pipe([
 			setName(fieldName),
 			transformFieldByType(fieldType),
 			prependFieldWithSpaces(spaceAmount),
 		])(field);
 
 		if (fieldType === SINGLE_FIELD) {
-			return wrapFieldWithParent(stringifyField, parent);
+			return wrapFieldWithParent(stringifiedField, parent);
 		}
 
 		const children = getFieldChildren(field);
 		return wrapFieldWithParent(
-			transformFields(getFieldDefinition)(children, spaceAmount + SPACE_INDENT_AMOUNT, stringifyField),
+			transformFields(getFieldDefinition)(children, spaceAmount + SPACE_INDENT_AMOUNT, stringifiedField),
 			parent
 		);
 	}, initialParent);
