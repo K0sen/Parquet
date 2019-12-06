@@ -5,7 +5,7 @@ const transformFieldToDremelString = require('../helpers/transformFieldToDremelS
 const hasFieldChild = require('../helpers/hasFieldChild');
 const getFieldChildren = require('../helpers/getFieldChildren');
 const getFieldDefinitionWrapper = require('../helpers/getFieldDefinition');
-const removeChildFromField = require('../helpers/removeChildFromField');
+const removeChildrenFromField = require('../helpers/removeChildrenFromField');
 
 const SPACE_INDENT_AMOUNT = 2;
 const HEADER = 'header';
@@ -44,22 +44,23 @@ const transformFields = getFieldDefinition => (fields, spaceAmount = 0, initialP
 	Object.entries(fields).reduce((parent, [fieldName, fieldBody]) => {
 		const field = pipe([
 			fieldBody => isDefinition(fieldBody) ? getFieldDefinition(fieldBody) : fieldBody,
-			fieldBody => fieldBody.physicalType ? removeChildFromField(fieldBody) : fieldBody,
+			fieldBody => fieldBody.physicalType ? removeChildrenFromField(fieldBody) : fieldBody,
+			fieldBody => fieldBody.physicalType ? Object.assign({}, fieldBody, { logicalType: 'UTF8' }) : fieldBody,
 		])(fieldBody);
 		const fieldType = defineFieldType(field);
-		const preparedField = pipe([
+		const stringifyField = pipe([
 			setName(fieldName),
 			transformFieldByType(fieldType),
 			prependFieldWithSpaces(spaceAmount),
 		])(field);
 
 		if (fieldType === SINGLE_FIELD) {
-			return wrapFieldWithParent(preparedField, parent);
+			return wrapFieldWithParent(stringifyField, parent);
 		}
 
 		const children = getFieldChildren(field);
 		return wrapFieldWithParent(
-			transformFields(getFieldDefinition)(children, spaceAmount + SPACE_INDENT_AMOUNT, preparedField),
+			transformFields(getFieldDefinition)(children, spaceAmount + SPACE_INDENT_AMOUNT, stringifyField),
 			parent
 		);
 	}, initialParent);

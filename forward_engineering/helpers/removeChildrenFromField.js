@@ -1,4 +1,4 @@
-const removeChildFromField = field => {
+const removeChildrenFromField = field => {
 	const newField = Object.assign({}, field);
 	delete newField.properties;
 	delete newField.patternProperties;
@@ -6,4 +6,4 @@ const removeChildFromField = field => {
 	return newField;
 }
 
-module.exports = removeChildFromField;
+module.exports = removeChildrenFromField;
