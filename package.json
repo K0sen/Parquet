@@ -27,6 +27,6 @@
         }
     },
     "description": "Hackolade plugin for Apache Parquet",
-    "icon_url": "C:\\Users\\Pascal\\.hackolade\\plugins\\Parquet\\logo.png",
+    "icon_url": "logo.png",
     "disabled": false
 }
