@@ -5,6 +5,19 @@ const getDefinitionsFromInitialData = require('./helpers/getDefinitionsFromIniti
 const transformJsonSchemaToDremelService = require('./services/transformJsonSchemaToDremelService');
 
 module.exports = {
+	generateScript(data, logger, callback) {
+		try {
+			const schema = JSON.parse(data.jsonSchema);
+			const dremelSchema = transformJsonSchemaToDremelService.transformSchema(
+				schema,
+				getDefinitionsFromInitialData(data, schema)
+			);
+
+			callback(null, dremelSchema);
+		} catch (e) {
+			callback({ message: e.message, stack: e.stack });
+		}
+	},
 	generateContainerScript(data, logger, callback) {
 		try {
 			const schemas = getJsonSchemasFromInitialData(data);
@@ -16,9 +29,7 @@ module.exports = {
 
 			callback(null, dremelSchemas.join('\n\n=====================\n\n'));
 		} catch (e) {
-			setTimeout(() => {
-				callback({ message: e.message, stack: e.stack });
-			}, 150);
+			callback({ message: e.message, stack: e.stack });
 		}
 	}
 };
