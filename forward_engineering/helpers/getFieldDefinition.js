@@ -1,6 +1,5 @@
 const isModelDef = field => field.$ref.indexOf('#model/') === 0;
 const isInternalDef = field => field.$ref.indexOf('#/') === 0;
-const isExternalDef = field => field.$ref.indexOf('file:') === 0;
 const getName = field => field.$ref.split('/').slice(-1)[0];
 
 const getFieldDefinition = ({ internalDefinitions, modelDefinitions, externalDefinitions }) => field => {
@@ -12,12 +11,7 @@ const getFieldDefinition = ({ internalDefinitions, modelDefinitions, externalDef
 		return internalDefinitions[getName(field)];
 	}
 
-	if (isExternalDef(field)) {
-		return externalDefinitions[getName(field)];
-	}
-
-	return field;
+	return externalDefinitions[getName(field)];
 }
 
 module.exports = getFieldDefinition;
-
