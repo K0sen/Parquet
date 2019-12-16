@@ -1,7 +1,8 @@
 const parquet_util = require('parquetjs-lite/lib/util');
 const parquet_thrift = require('parquetjs-lite/gen-nodejs/parquet_types');
 const isNumber = require('../helpers/isNumber');
-const getNestedFieldsObject = require('../helpers/getNestedFieldsObject');
+const generateSchemaFieldsTree = require('../helpers/generateSchemaFieldsTree');
+const defineSchemaFieldsPath = require('../helpers/defineSchemaFieldsPath');
 const getFieldAdditionalData = require('../helpers/getFieldAdditionalData');
 const pipe = require('../../helpers/pipe');
 
@@ -65,7 +66,7 @@ const defineFieldAdditionalData = fieldsMetadata => fields =>
 
 		const additionalData = getFieldAdditionalData(fieldsMetadata, field);
 		const additionalFieldMeta = additionalData ? additionalData.meta_data : {};
-		 	return Object.assign(acc, {
+		return Object.assign(acc, {
 			[name]: Object.assign({}, field, transformField(additionalFieldMeta)),
 		});
 	}, {});
@@ -84,7 +85,8 @@ const transformMetadata = rawMetadata => {
 	const fieldsMetadata = getFieldsMetadata(rawMetadata);
 	const transformedFields = schema.slice(1).map((field) => transformField(field));
 	return pipe([
-		getNestedFieldsObject,
+		generateSchemaFieldsTree,
+		defineSchemaFieldsPath,
 		defineFieldAdditionalData(fieldsMetadata),
 	])(transformedFields);
 }
