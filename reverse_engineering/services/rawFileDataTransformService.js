@@ -55,8 +55,6 @@ const defineFieldAdditionalData = fieldsMetadata => fields =>
 			return acc;
 		}
 
-		const additionalData = getFieldAdditionalData(fieldsMetadata, field);
-		const additionalFieldMeta = additionalData ? additionalData.meta_data : {};
 		if (field.fields) {
 			return Object.assign(acc, {
 				[name]: Object.assign({}, field, {
@@ -65,7 +63,9 @@ const defineFieldAdditionalData = fieldsMetadata => fields =>
 			});
 		}
 
-		return Object.assign(acc, {
+		const additionalData = getFieldAdditionalData(fieldsMetadata, field);
+		const additionalFieldMeta = additionalData ? additionalData.meta_data : {};
+		 	return Object.assign(acc, {
 			[name]: Object.assign({}, field, transformField(additionalFieldMeta)),
 		});
 	}, {});

@@ -1,6 +1,7 @@
 const areArraysEqual = (first, second) =>
 	Array.isArray(first)
 	&& Array.isArray(second)
-	&& first.every(elem => second.includes(elem));
+	&& first.length === second.length
+	&& first.every((elem, i) => second[i] === elem);
 
 module.exports = areArraysEqual;
