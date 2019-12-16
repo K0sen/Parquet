@@ -20,6 +20,14 @@
 				},
 				"width": 20
 			},
+			{
+				"value": "[ ]",
+				"dependency": {
+					"key": "repetition",
+					"value": "repeated"
+				},
+				"width": 20
+			},
 			"indexes",
 			"refType"
 		]
