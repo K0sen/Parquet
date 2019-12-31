@@ -23,8 +23,11 @@ module.exports = {
 				containerName:"New namespace",
 				jsonSchema: JSON.stringify(preparedJSONSchema, null, 4),
 			});
-		} catch(err) {
-			callback(err);
+		} catch(error) {
+			callback({
+				message: error.message,
+				stack: error.stack,
+			});
 		}
 	}
 };
