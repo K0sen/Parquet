@@ -24,10 +24,14 @@ module.exports = {
 				jsonSchema: JSON.stringify(preparedJSONSchema, null, 4),
 			});
 		} catch(error) {
-			callback({
-				message: error.message,
+			const fileName = path.basename(data.filePath);
+			const errorObject = {
+				message: `${error.message}\nFile name: ${fileName}`,
 				stack: error.stack,
-			});
+			};
+
+			logger.log('error', errorObject, 'Parquet Reverse-Engineering Error');
+			callback(errorObject);
 		}
 	}
 };
