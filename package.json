@@ -1,10 +1,10 @@
 {
     "name": "Parquet",
-    "version": "0.0.1",
-    "versionDate": "2019-08-24",
+    "version": "0.1.0",
+    "versionDate": "2019-12-17",
     "author": "hackolade",
     "engines": {
-        "hackolade": "3.4.0",
+        "hackolade": "3.5.5",
         "hackoladePlugin": "1.2.0"
     },
     "contributes": {
@@ -26,7 +26,7 @@
             "enableJsonType": true
         }
     },
-    "description": "Hackolade plugin for Apache Parquet",
+    "description": "Hackolade plugin for Apache Parquet schema",
     "icon_url": "logo.png",
     "disabled": false
 }

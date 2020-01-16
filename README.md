@@ -1,5 +1,5 @@
-# Apache Parquet
-Hackolade plugin for Apache Parquet
+# Parquet schema
+Hackolade plugin for Apache Parquet schema
 
 <div class="main-content">
 
